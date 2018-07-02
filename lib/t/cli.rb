@@ -890,6 +890,7 @@ module T
     method_option 'decode_uris', aliases: '-d', type: :boolean, desc: 'Decodes t.co URLs into their original form.'
     method_option 'id', aliases: '-i', type: :boolean, desc: 'Specify user via ID instead of screen name.'
     method_option 'long', aliases: '-l', type: :boolean, desc: 'Output in long format.'
+    method_option 'adam', aliases: '-a', type: :boolean, desc: 'Output in adam format.'
     method_option 'relative_dates', aliases: '-a', type: :boolean, desc: 'Show relative dates.'
     def whois(user)
       require 't/core_ext/string'
@@ -899,6 +900,9 @@ module T
       user = client.user(user, opts)
       if options['csv'] || options['long']
         print_users([user])
+      elsif options['adam']
+        desc = user.description.gsub(/\n+/, ' ')
+        print "@#{user.screen_name}\t#{user.followers_count}\t#{desc}\n"
       else
         array = []
         array << ['ID', user.id.to_s]

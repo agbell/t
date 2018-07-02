@@ -26,6 +26,7 @@ module T
 
     desc 'all QUERY', "Returns the #{DEFAULT_NUM_RESULTS} most recent Tweets that match the specified query."
     method_option 'csv', aliases: '-c', type: :boolean, desc: 'Output in CSV format.'
+    method_option 'adam', aliases: '-a', type: :boolean, desc: 'Output in adam format'
     method_option 'decode_uris', aliases: '-d', type: :boolean, desc: 'Decodes t.co URLs into their original form.'
     method_option 'long', aliases: '-l', type: :boolean, desc: 'Output in long format.'
     method_option 'number', aliases: '-n', type: :numeric, default: DEFAULT_NUM_RESULTS

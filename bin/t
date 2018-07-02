@@ -17,6 +17,7 @@ def pute(*args)
 end
 
 begin
+  sleep(3)
   T::CLI.start(ARGV)
 rescue Interrupt
   pute 'Quitting...'
